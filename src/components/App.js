@@ -95,9 +95,11 @@ export default function App() {
   );
 
   useEffect(function () {
-    fetch("http://localhost:9000/questions")
+    fetch("https://amjadvc.github.io/react-quiz/questions.json")
       .then((res) => res.json())
-      .then((data) => dispatch({ type: "dataReceved", payload: data }))
+      .then((data) =>
+        dispatch({ type: "dataReceved", payload: data.questions })
+      )
       .catch((err) => dispatch({ type: "dataFailed" }));
   }, []);
   return (
